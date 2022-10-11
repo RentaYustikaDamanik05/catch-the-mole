@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
 /* 1 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -55,7 +55,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /* 2 */
 /***/ ((module) => {
 
-"use strict";
 
 
 var stylesInDOM = [];
@@ -165,7 +164,6 @@ module.exports = function (list, options) {
 /* 3 */
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -241,7 +239,6 @@ module.exports = domAPI;
 /* 4 */
 /***/ ((module) => {
 
-"use strict";
 
 
 var memo = {};
@@ -286,7 +283,6 @@ module.exports = insertBySelector;
 /* 5 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -304,7 +300,6 @@ module.exports = setAttributesWithoutAttributes;
 /* 6 */
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -321,7 +316,6 @@ module.exports = insertStyleElement;
 /* 7 */
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -343,7 +337,6 @@ module.exports = styleTagTransform;
 /* 8 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -357,7 +350,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: green;\n}\n", "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;AACnB","sourcesContent":["body {\n  background: green;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: green;\n  width: 100%;\n  height: 100%;\n}\n\n.big-title {\n  font-weight: bold;\n}\n", "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,iBAAiB;AACnB","sourcesContent":["body {\n  background: green;\n  width: 100%;\n  height: 100%;\n}\n\n.big-title {\n  font-weight: bold;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -366,7 +359,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: green;\n}\n", ""
 /* 9 */
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (item) {
@@ -394,7 +386,6 @@ module.exports = function (item) {
 /* 10 */
 /***/ ((module) => {
 
-"use strict";
 
 
 /*
@@ -575,7 +566,9 @@ module.exports = function (cssWithMappingToString) {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-__webpack_require__(1);
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
 })();
 
 /******/ })()

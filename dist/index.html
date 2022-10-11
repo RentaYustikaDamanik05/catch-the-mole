@@ -1,5 +1,190 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Catch the mole</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+    }
+    .big-title {
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      width: 200px;
+      justify-content: space-between;
+    }
+    .rounded {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      background-color: black;
+    }
+    .win {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      visibility: hidden;
+    }
+    .win p {
+      margin: 0;
+    }
+    .win p:nth-child(1) {
+      color: green;
+    }
+    .win.active {
+      visibility: visible;
+    }
+    .win-statement {
+      visibility: hidden;
+    }
+    .win-statement.active {
+      visibility: visible;
+    }
+    .btn-start {
+      padding: 10px 16px;
+      background-color: #ea4c89;
+      border-radius: 8px;
+      transition: color 0.1s;
+      outline: none;
+      border-style: none;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-start:hover {
+      opacity: 0.7;
+    }
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      visibility: hidden;
+    }
+    img.active {
+      visibility: visible;
+    }
+  </style>
+  <script>
+    let activeStart = false;
+    let timer = 0;
+    let catchCount = 0;
+    let interval, innerInterval, moleInterval;
+
+    function debounce(func, timeout = 300) {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          func.apply(this, args);
+        }, timeout);
+      };
+    }
+    function clickHole() {
+      if (activeStart) {
+        catchCount += 1;
+        document.querySelector('.counting').innerHTML = catchCount;
+      }
+    }
+    function randomMole() {
+      const thisTimer = [200, 400];
+      const id = ['1', '2', '3'];
+      const randomItem = id[Math.floor(Math.random() * id.length)];
+      const randomTimer =
+        thisTimer[Math.floor(Math.random() * thisTimer.length)];
+      const hole = document.getElementsByClassName('rounded');
+      for (let i = 0; i < hole.length; i++) {
+        moleInterval = setInterval(function () {
+          if (randomItem === hole[i].getAttribute('data-id')) {
+            document
+              .getElementsByClassName('mole-img')
+              [i].classList.add('active');
+          } else {
+            document
+              .getElementsByClassName('mole-img')
+              [i].classList.remove('active');
+          }
+        }, randomTimer);
+      }
+    }
+    const processClick = debounce(() => clickHole(), 400);
+    const start = () => {
+      timer = 0;
+      activeStart = !activeStart;
+      document.querySelector('.win').classList.add('active');
+      document.querySelector('.btn-start').disabled = true;
+      interval = setInterval(function () {
+        timer += 1;
+        document.querySelector('.timer').innerHTML = timer;
+      }, 1000);
+      innerInterval = setInterval(function () {
+        randomMole();
+        clearInterval(moleInterval);
+      }, 1000);
+    };
+    const clickMole = () => {
+      activeStart = !activeStart;
+      catchCount += 1;
+      document.querySelector('.counting').innerHTML = catchCount;
+      document.querySelector('.timer').innerHTML = timer;
+      clearInterval(interval);
+      clearInterval(innerInterval);
+      document.querySelector('.btn-start').disabled = false;
+      document.querySelector('.win-statement').classList.add('active');
+      if (!activeStart) {
+        alert(
+          `Gotcha! time to catch ${timer} seconds and ${catchCount} clicks`
+        );
+      } else {
+        alert('You already catch the mole, restart the game!');
+      }
+    };
+  </script>
   <body>
-    BODY
+    <div class="big-title">MetaPals Catch a Mole!</div>
+    <div class="container">
+      <div class="rounded" data-id="1" onclick="processClick(this)">
+        <img
+          src="https://metapals.github.io/frontend-interview-test-lite/assets/mole.60ea17ce.png"
+          alt="mole"
+          onclick="clickMole()"
+          class="mole-img"
+        />
+      </div>
+      <div class="rounded" data-id="2" onclick="processClick(this)">
+        <img
+          src="https://metapals.github.io/frontend-interview-test-lite/assets/mole.60ea17ce.png"
+          alt="mole"
+          onclick="clickMole()"
+          class="mole-img"
+        />
+      </div>
+      <div class="rounded" data-id="3" onclick="processClick(this)">
+        <img
+          src="https://metapals.github.io/frontend-interview-test-lite/assets/mole.60ea17ce.png"
+          alt="mole"
+          onclick="clickMole()"
+          class="mole-img"
+        />
+      </div>
+    </div>
+    <div class="win">
+      <p class="win-statement">You win!</p>
+      <p>Clicks: <span class="counting">0</span></p>
+      <p>Elapsed time: <span class="timer">0</span> seconds</p>
+    </div>
+    <button class="btn-start" onclick="start()">Start</button>
   </body>
 </html>

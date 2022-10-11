@@ -3,7 +3,7 @@ module.exports = {
   mode: 'none',
   entry: './src/index.js',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/build',
     filename: 'bundle.js',
   },
   devtool: 'source-map',
@@ -15,10 +15,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.png$/,
-        use: 'file-loader',
       },
       {
         test: /\.js$/,
