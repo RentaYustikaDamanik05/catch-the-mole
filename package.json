@@ -1,0 +1,40 @@
+{
+  "name": "catch-the-mole",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "webpack",
+    "dev-server": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RentaYustikaDamanik05/catch-the-mole.git"
+  },
+  "author": "Renta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RentaYustikaDamanik05/catch-the-mole/issues"
+  },
+  "homepage": "https://github.com/RentaYustikaDamanik05/catch-the-mole",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "private": true,
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0"
+  }
+}
