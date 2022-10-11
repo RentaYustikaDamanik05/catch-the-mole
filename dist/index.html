@@ -105,8 +105,8 @@
       const randomTimer =
         thisTimer[Math.floor(Math.random() * thisTimer.length)];
       const hole = document.getElementsByClassName('rounded');
-      for (let i = 0; i < hole.length; i++) {
-        moleInterval = setInterval(function () {
+      moleInterval = setInterval(function () {
+        for (let i = 0; i < hole.length; i++) {
           if (randomItem === hole[i].getAttribute('data-id')) {
             document
               .getElementsByClassName('mole-img')
@@ -116,22 +116,22 @@
               .getElementsByClassName('mole-img')
               [i].classList.remove('active');
           }
-        }, randomTimer);
-      }
+        }
+      }, randomTimer);
     }
     const processClick = debounce(() => clickHole(), 400);
     const start = () => {
       timer = 0;
+      catchCount = 0;
       activeStart = !activeStart;
       document.querySelector('.win').classList.add('active');
+      document.querySelector('.win-statement').classList.remove('active');
+      document.querySelector('.counting').innerHTML = catchCount;
       document.querySelector('.btn-start').disabled = true;
       interval = setInterval(function () {
         timer += 1;
         document.querySelector('.timer').innerHTML = timer;
-      }, 1000);
-      innerInterval = setInterval(function () {
         randomMole();
-        clearInterval(moleInterval);
       }, 1000);
     };
     const clickMole = () => {
@@ -140,7 +140,7 @@
       document.querySelector('.counting').innerHTML = catchCount;
       document.querySelector('.timer').innerHTML = timer;
       clearInterval(interval);
-      clearInterval(innerInterval);
+      clearInterval(moleInterval);
       document.querySelector('.btn-start').disabled = false;
       document.querySelector('.win-statement').classList.add('active');
       if (!activeStart) {
