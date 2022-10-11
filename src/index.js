@@ -1,1 +1,1 @@
-import './styles/main.css';
+require('./styles/main.css');
