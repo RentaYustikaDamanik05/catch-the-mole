@@ -1,14 +1,14 @@
 const path = require('path');
 module.exports = {
   mode: 'none',
-  entry: './index.js',
+  entry: './dist/index.js',
   output: {
     path: __dirname + '/build',
     filename: 'bundle.js',
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: './',
   },
   module: {
     rules: [
