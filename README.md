@@ -1,2 +1,4 @@
 # catch-the-mole
-Test
+install: npm i
+build: npm run build
+run: npm run dev-server
